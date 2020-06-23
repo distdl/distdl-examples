@@ -59,6 +59,7 @@ def generate_distributed_network():
     P_fc_out = P_base_hi.create_cartesian_topology_partition([1, 2])
     P_fc_mtx = P_base.create_cartesian_topology_partition([2, 2])
 
+    # net = distdl.nn.Distributed(distdl.nn.DistributedTranspose(P_root,
     net = torch.nn.Sequential(distdl.nn.DistributedTranspose(P_root,
                                                              P_conv),
                               distdl.nn.DistributedConv2d(P_conv,

@@ -31,13 +31,6 @@ for epoch in range(n_epochs):
 
         optimizer.zero_grad()
 
-        # Currently, the exchange algorithm cannot handle varied size
-        # tensor inputs. So we must give each pass through the network the same
-        # amount of data each time
-        # We do the same in the sequential case to be a fair comparison
-        if (len(labels) < max_batch_size):
-            break
-
         output = lenet5_sequential(images)
 
         loss = criterion(output, labels)
@@ -60,13 +53,6 @@ total_correct = 0
 avg_loss = 0.0
 
 for i, (images, labels) in enumerate(test_loader):
-
-    # Currently, the exchange algorithm cannot handle varied size
-    # tensor inputs. So we must give each pass through the network the same
-    # amount of data each time
-    # We do the same in the sequential case to be a fair comparison
-    if len(labels) < max_batch_size:
-        break
 
     total += max_batch_size
     output = lenet5_sequential(images)
