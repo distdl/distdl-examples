@@ -22,8 +22,8 @@ class DummyLoader:
 
     def __iter__(self):
         for i in range(self.n_batches):
-            yield distdl.utilities.torch.NoneTensor(), np.zeros(self.batch_size)
-        yield distdl.utilities.torch.NoneTensor(), np.zeros(self.mod_batch_size)
+            yield distdl.utilities.torch.zero_volume_tensor(self.batch_size), np.zeros(self.batch_size)
+        yield distdl.utilities.torch.zero_volume_tensor(self.mod_batch_size), np.zeros(self.mod_batch_size)
 
 
 def get_data_loaders(batch_size, download=False, dummy=False):
