@@ -37,7 +37,7 @@ def generate_sequential_network():
 def generate_distributed_network():
 
     P_world = distdl.backend.backend.Partition(MPI.COMM_WORLD)
-    P_world.comm.Barrier()
+    P_world._comm.Barrier()
 
     # Base partition the network is ditributed across
     P_base = P_world.create_partition_inclusive(np.arange(4))
