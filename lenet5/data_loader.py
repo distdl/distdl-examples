@@ -40,10 +40,10 @@ def get_data_loaders(batch_size, download=False, dummy=False):
         train_loader = DataLoader(data_train,
                                   batch_size=batch_size,
                                   shuffle=True,
-                                  num_workers=1)
+                                  num_workers=0)
         test_loader = DataLoader(data_test,
                                  batch_size=batch_size,
-                                 num_workers=1)
+                                 num_workers=0)
     else:
         train_loader = DummyLoader(batch_size, 60000)
         test_loader = DummyLoader(batch_size, 10000)
