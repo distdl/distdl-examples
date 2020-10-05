@@ -16,7 +16,7 @@ P_base = vgg_distributed.P_base
 
 max_batch_size = 64
 
-n_epochs = 1
+n_epochs = 10
 
 loud = True
 
@@ -74,8 +74,6 @@ for epoch in range(n_epochs):
         print(f"Epoch {epoch} time: {MPI.Wtime() - tte}")
         sys.stdout.flush()
 
-    break
-
 if P_base.rank == 0:
     print(f"Total time: {MPI.Wtime() - tt}")
     sys.stdout.flush()
@@ -98,6 +96,7 @@ with torch.no_grad():
 
             if loud and i % 10 == 0:
                 print(f'Test Batch {i}')
+                sys.stdout.flush()
 
 perc = float(total_correct) / float(total)
 
