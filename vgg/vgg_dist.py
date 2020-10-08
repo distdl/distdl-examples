@@ -91,7 +91,7 @@ class DistributedVGG(distdl.nn.Module):
         self.input_map = distdl.nn.DistributedTranspose(P_root, P_feat)
 
         # Create the feature mapping portion of the network
-        cfg = torchvision.models.vgg.cfg[vgg_cfg_str]
+        cfg = torchvision.models.vgg.cfgs[vgg_cfg_str]
         self.features = make_layers(cfg, P_feat)
 
         # In the Torchvision implementation, this layer handles oddly sized
